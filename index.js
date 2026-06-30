@@ -4,7 +4,10 @@ const path = require('path');
 const app = express();
 
 // SABOTAGE 1: Expects a very specific environment variable name!
-const dbUri = process.env.DATABASE_URI || 'mongodb://localhost:27017/phoenix';
+const dbUri =
+  process.env.MONGODB_URI ||
+  process.env.DATABASE_URI ||
+  'mongodb://localhost:27017/phoenix';
 
 mongoose.connect(dbUri)
   .then(() => console.log('Connected to MongoDB!'))
